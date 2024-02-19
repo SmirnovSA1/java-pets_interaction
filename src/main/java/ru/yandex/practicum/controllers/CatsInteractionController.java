@@ -1,6 +1,8 @@
 package ru.yandex.practicum.controllers;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 import ru.yandex.practicum.exceptions.IncorrectCountException;
 
 import java.util.Map;
@@ -32,6 +34,11 @@ public class CatsInteractionController {
     @GetMapping("/happiness")
     public Map<String, Integer> happiness() {
         return Map.of("happiness", happiness);
+    }
+
+    @GetMapping("/feed")
+    public Map<String, Integer> feed() {
+        throw new ResponseStatusException(HttpStatus.NOT_IMPLEMENTED, "Метод /feed ещё не реализован.");
     }
 
     @ExceptionHandler
